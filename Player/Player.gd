@@ -1,4 +1,5 @@
 extends Node2D
+class_name Player
 
 const PinScene = preload("res://Wheel/Pin.tscn")
 
@@ -49,3 +50,6 @@ func set_pin_at(pos: Vector2, wheel):
 func release_pin():
 	pin_joint.set_node_a("")
 	player_body.gravity_scale = 4
+
+func knockback(force: Vector2):
+	player_body.apply_central_impulse(force)
