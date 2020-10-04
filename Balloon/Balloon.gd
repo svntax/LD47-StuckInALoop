@@ -1,5 +1,9 @@
 extends Area2D
 
+signal popped()
+
+onready var animation_player = $AnimationPlayer
+
 onready var popped = false
 onready var explosion_force = 300
 
@@ -17,6 +21,9 @@ func pop_balloon():
 	if popped:
 		return
 	popped = true
-	Globals.points += 10
-	
-	queue_free()
+	emit_signal("popped")
+	animation_player.play("popped")
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "popped":
+		queue_free()

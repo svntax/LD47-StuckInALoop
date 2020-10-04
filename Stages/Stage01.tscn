@@ -1,0 +1,126 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Wheel/Wheel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Stages/StageTemplate.tscn" type="PackedScene" id=3]
+
+[node name="StageTemplate" instance=ExtResource( 3 )]
+
+[node name="Wheel" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="Wheel2" parent="." index="1" instance=ExtResource( 2 )]
+position = Vector2( 272, 0 )
+
+[node name="Wheel3" parent="." index="2" instance=ExtResource( 2 )]
+position = Vector2( -272, 0 )
+
+[node name="Player" parent="." index="3" instance=ExtResource( 1 )]
+position = Vector2( 0, -160 )
+
+[node name="Position2D" type="Position2D" parent="BalloonSpawns" index="0"]
+position = Vector2( -320, -96 )
+
+[node name="Position2D2" type="Position2D" parent="BalloonSpawns" index="1"]
+position = Vector2( -224, -96 )
+
+[node name="Position2D3" type="Position2D" parent="BalloonSpawns" index="2"]
+position = Vector2( -224, -56 )
+
+[node name="Position2D4" type="Position2D" parent="BalloonSpawns" index="3"]
+position = Vector2( -320, -56 )
+
+[node name="Position2D5" type="Position2D" parent="BalloonSpawns" index="4"]
+position = Vector2( -360, -40 )
+
+[node name="Position2D6" type="Position2D" parent="BalloonSpawns" index="5"]
+position = Vector2( -184, -40 )
+
+[node name="Position2D7" type="Position2D" parent="BalloonSpawns" index="6"]
+position = Vector2( -248, 48 )
+
+[node name="Position2D8" type="Position2D" parent="BalloonSpawns" index="7"]
+position = Vector2( -296, 48 )
+
+[node name="Position2D9" type="Position2D" parent="BalloonSpawns" index="8"]
+position = Vector2( -272, 72 )
+
+[node name="Position2D10" type="Position2D" parent="BalloonSpawns" index="9"]
+position = Vector2( -352, 32 )
+
+[node name="Position2D11" type="Position2D" parent="BalloonSpawns" index="10"]
+position = Vector2( -192, 32 )
+
+[node name="Position2D12" type="Position2D" parent="BalloonSpawns" index="11"]
+position = Vector2( -272, -80 )
+
+[node name="Position2D13" type="Position2D" parent="BalloonSpawns" index="12"]
+position = Vector2( -48, -88 )
+
+[node name="Position2D14" type="Position2D" parent="BalloonSpawns" index="13"]
+position = Vector2( 48, -88 )
+
+[node name="Position2D15" type="Position2D" parent="BalloonSpawns" index="14"]
+position = Vector2( 48, -48 )
+
+[node name="Position2D16" type="Position2D" parent="BalloonSpawns" index="15"]
+position = Vector2( -48, -48 )
+
+[node name="Position2D17" type="Position2D" parent="BalloonSpawns" index="16"]
+position = Vector2( -88, -32 )
+
+[node name="Position2D18" type="Position2D" parent="BalloonSpawns" index="17"]
+position = Vector2( 88, -32 )
+
+[node name="Position2D19" type="Position2D" parent="BalloonSpawns" index="18"]
+position = Vector2( 24, 56 )
+
+[node name="Position2D20" type="Position2D" parent="BalloonSpawns" index="19"]
+position = Vector2( -24, 56 )
+
+[node name="Position2D21" type="Position2D" parent="BalloonSpawns" index="20"]
+position = Vector2( 0, 80 )
+
+[node name="Position2D22" type="Position2D" parent="BalloonSpawns" index="21"]
+position = Vector2( -80, 40 )
+
+[node name="Position2D23" type="Position2D" parent="BalloonSpawns" index="22"]
+position = Vector2( 80, 40 )
+
+[node name="Position2D24" type="Position2D" parent="BalloonSpawns" index="23"]
+position = Vector2( 0, -72 )
+
+[node name="Position2D25" type="Position2D" parent="BalloonSpawns" index="24"]
+position = Vector2( 224, -88 )
+
+[node name="Position2D26" type="Position2D" parent="BalloonSpawns" index="25"]
+position = Vector2( 320, -88 )
+
+[node name="Position2D27" type="Position2D" parent="BalloonSpawns" index="26"]
+position = Vector2( 320, -48 )
+
+[node name="Position2D28" type="Position2D" parent="BalloonSpawns" index="27"]
+position = Vector2( 224, -48 )
+
+[node name="Position2D29" type="Position2D" parent="BalloonSpawns" index="28"]
+position = Vector2( 184, -32 )
+
+[node name="Position2D30" type="Position2D" parent="BalloonSpawns" index="29"]
+position = Vector2( 360, -32 )
+
+[node name="Position2D31" type="Position2D" parent="BalloonSpawns" index="30"]
+position = Vector2( 296, 56 )
+
+[node name="Position2D32" type="Position2D" parent="BalloonSpawns" index="31"]
+position = Vector2( 248, 56 )
+
+[node name="Position2D33" type="Position2D" parent="BalloonSpawns" index="32"]
+position = Vector2( 272, 80 )
+
+[node name="Position2D34" type="Position2D" parent="BalloonSpawns" index="33"]
+position = Vector2( 192, 40 )
+
+[node name="Position2D35" type="Position2D" parent="BalloonSpawns" index="34"]
+position = Vector2( 352, 40 )
+
+[node name="Position2D36" type="Position2D" parent="BalloonSpawns" index="35"]
+position = Vector2( 272, -72 )

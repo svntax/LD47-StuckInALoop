@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Stages/Stage.gd" type="Script" id=3]
+
+[node name="StageTemplate" type="Node2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BalloonSpawns" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Balloons" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
