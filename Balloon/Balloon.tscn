@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Balloon/Balloon.gd" type="Script" id=1]
 [ext_resource path="res://Balloon/balloon_red.png" type="Texture" id=2]
+[ext_resource path="res://Balloon/OffscreenMarker.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 9.0
@@ -43,4 +44,6 @@ texture = ExtResource( 2 )
 autoplay = "idle"
 anims/idle = SubResource( 2 )
 anims/popped = SubResource( 3 )
+
+[node name="OffscreenMarker" parent="." instance=ExtResource( 3 )]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
