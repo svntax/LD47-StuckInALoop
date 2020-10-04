@@ -1,9 +1,244 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://GUI/FutilePro.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://GUI/wooden_ui_clean.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "intro"
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleRoot:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleRootIntro:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("FadeRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("TitleRootIntro:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 75.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "intro_transition"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "normal"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleRootIntro:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleRoot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("FadeRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="TitleRootIntro" type="Node2D" parent="."]
+position = Vector2( 160, -80 )
+rotation = 1.309
+
+[node name="RigidBody2D" type="RigidBody2D" parent="TitleRootIntro"]
+position = Vector2( 0, 120 )
+gravity_scale = 9.0
+linear_damp = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TitleRootIntro/RigidBody2D"]
+shape = SubResource( 3 )
+
+[node name="TitleBg2" type="NinePatchRect" parent="TitleRootIntro/RigidBody2D"]
+margin_left = -56.0
+margin_top = -16.0
+margin_right = 64.0
+margin_bottom = 16.0
+texture = ExtResource( 3 )
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title2" type="Label" parent="TitleRootIntro/RigidBody2D"]
+margin_left = -56.0
+margin_top = -8.0
+margin_right = 64.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.356863, 0.431373, 0.882353, 1 )
+text = "GAME TITLE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftLine2" type="Line2D" parent="TitleRootIntro/RigidBody2D"]
+position = Vector2( -7.00002, -120 )
+points = PoolVector2Array( -48, 106, 7, 0 )
+width = 2.0
+default_color = Color( 0.133333, 0.12549, 0.203922, 1 )
+
+[node name="RightLine2" type="Line2D" parent="TitleRootIntro/RigidBody2D"]
+position = Vector2( -1, -118 )
+points = PoolVector2Array( 1, -2, 64, 104 )
+width = 2.0
+default_color = Color( 0.133333, 0.12549, 0.203922, 1 )
+
+[node name="TitlePin" type="StaticBody2D" parent="."]
+position = Vector2( 160, -80 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="TitlePin"]
+node_a = NodePath("..")
+node_b = NodePath("../../TitleRootIntro/RigidBody2D")
+
+[node name="TitleRoot" type="Node2D" parent="."]
+visible = false
+position = Vector2( 160, -80 )
+
+[node name="LeftLine" type="Line2D" parent="TitleRoot"]
+position = Vector2( -7.00002, 0 )
+points = PoolVector2Array( -48, 106, 7, 0 )
+width = 2.0
+default_color = Color( 0.133333, 0.12549, 0.203922, 1 )
+
+[node name="RightLine" type="Line2D" parent="TitleRoot"]
+position = Vector2( -1, 2 )
+points = PoolVector2Array( 1, -2, 64, 104 )
+width = 2.0
+default_color = Color( 0.133333, 0.12549, 0.203922, 1 )
+
+[node name="TitleBg" type="NinePatchRect" parent="TitleRoot"]
+margin_left = -56.0
+margin_top = 104.0
+margin_right = 64.0
+margin_bottom = 136.0
+texture = ExtResource( 3 )
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="TitleRoot"]
+margin_left = -56.0
+margin_top = 112.0
+margin_right = 64.0
+margin_bottom = 144.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.356863, 0.431373, 0.882353, 1 )
+text = "GAME TITLE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/intro = SubResource( 2 )
+anims/intro_transition = SubResource( 5 )
+anims/normal = SubResource( 4 )
+
+[node name="IntroTimer" type="Timer" parent="."]
+wait_time = 4.5
+one_shot = true
+
+[node name="FadeRect" type="ColorRect" parent="."]
+margin_right = 320.0
+margin_bottom = 240.0
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="IntroTimer" to="." method="_on_IntroTimer_timeout"]

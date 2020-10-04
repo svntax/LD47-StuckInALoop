@@ -142,9 +142,4 @@ position = Vector2( -480, 0 )
 [node name="RightBound" parent="MapBounds" index="3"]
 position = Vector2( 480, 0 )
 
-[node name="Score" parent="UI" index="0"]
-margin_top = 8.0
-margin_right = 320.0
-margin_bottom = 22.0
-
 [editable path="Player"]
