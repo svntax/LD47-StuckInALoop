@@ -11,6 +11,9 @@ onready var starting_pin = $Pin
 onready var current_pin = null
 
 onready var dash_particles = $PlayerBody/DashParticles
+onready var dash_stop_timer = $DashStopTimer
+onready var dashing = false
+onready var layers_anim_player = $LayersAnimation
 
 export (NodePath) var bottom_bound = ""
 onready var bottom_map_pos = null
@@ -36,8 +39,13 @@ func _physics_process(_delta):
 	
 	if player_body.linear_velocity.length() >= Globals.MIN_DASH_SPEED:
 		dash_particles.emitting = true
+		layers_anim_player.play("dashing")
+		dash_stop_timer.stop()
+		dashing = true
 	else:
-		dash_particles.emitting = false
+		# Add a bit of delay before the player has stopped dashing
+		if dash_stop_timer.is_stopped():
+			dash_stop_timer.start()
 	
 	# Controls
 	if Input.is_action_just_pressed("left_click"):
@@ -91,5 +99,13 @@ func release_pin():
 	player_body.gravity_scale = 4
 	current_pin = null
 
+func is_dashing() -> bool:
+	return dashing
+
 func knockback(force: Vector2):
 	player_body.apply_central_impulse(force)
+
+func _on_DashStopTimer_timeout():
+	dashing = false
+	dash_particles.emitting = false
+	layers_anim_player.play("normal")

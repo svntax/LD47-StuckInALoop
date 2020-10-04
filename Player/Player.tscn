@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Wheel/Pin.tscn" type="PackedScene" id=2]
@@ -13,6 +13,38 @@ gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 
+[sub_resource type="Animation" id=3]
+resource_name = "dashing"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerBody:collision_mask")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "normal"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerBody:collision_mask")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
 [node name="Player" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -22,7 +54,6 @@ node_b = NodePath("../PlayerBody")
 
 [node name="Pin" parent="." instance=ExtResource( 2 )]
 collision_layer = 0
-collision_mask = 0
 permanent = true
 
 [node name="PlayerBody" type="RigidBody2D" parent="." groups=[
@@ -58,3 +89,13 @@ lifetime = 0.2
 local_coords = false
 process_material = SubResource( 2 )
 texture = ExtResource( 3 )
+
+[node name="LayersAnimation" type="AnimationPlayer" parent="."]
+autoplay = "normal"
+anims/dashing = SubResource( 3 )
+anims/normal = SubResource( 4 )
+
+[node name="DashStopTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+[connection signal="timeout" from="DashStopTimer" to="." method="_on_DashStopTimer_timeout"]
