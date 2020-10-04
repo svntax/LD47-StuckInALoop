@@ -4,10 +4,21 @@ class_name Player
 const PinScene = preload("res://Wheel/Pin.tscn")
 
 const MIN_PLAYER_DIST = 13
+const ROPE_COLOR = Color("#222034")
 
 onready var player_body = $PlayerBody
 onready var pin_joint = $PinJoint
 onready var starting_pin = $Pin
+onready var current_pin = null
+
+func _draw():
+	if current_pin != null:
+		var from = player_body.global_position - position
+		var to = current_pin.global_position - position
+		draw_line(from, to, ROPE_COLOR, 2)
+
+func _process(_delta):
+	update()
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("left_click"):
@@ -32,6 +43,7 @@ func set_pin_at(pos: Vector2, wheel):
 	var pin = PinScene.instance()
 	wheel.add_child(pin)
 	pin.global_position = pos
+	current_pin = pin
 	
 	# Reparent the starting pin and pin joint to the wheel
 	var parent = pin_joint.get_parent()
@@ -50,6 +62,7 @@ func set_pin_at(pos: Vector2, wheel):
 func release_pin():
 	pin_joint.set_node_a("")
 	player_body.gravity_scale = 4
+	current_pin = null
 
 func knockback(force: Vector2):
 	player_body.apply_central_impulse(force)
