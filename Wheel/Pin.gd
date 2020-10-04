@@ -20,6 +20,7 @@ func break_pin():
 	queue_free()
 
 func _on_AreaDetect_body_entered(body):
+	# TODO: inconsistent, needs rework
 	if body.is_in_group("Players"):
 		var speed = body.linear_velocity.length()
 		if speed >= Globals.MIN_DASH_SPEED:

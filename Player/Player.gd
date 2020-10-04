@@ -12,6 +12,15 @@ onready var current_pin = null
 
 onready var dash_particles = $PlayerBody/DashParticles
 
+export (NodePath) var bottom_bound = ""
+onready var bottom_map_pos = null
+onready var game_over = false
+
+func _ready():
+	var bottom = get_node_or_null(bottom_bound)
+	if bottom != null:
+		bottom_map_pos = bottom.global_position
+
 func _draw():
 	if current_pin != null:
 		var from = player_body.global_position - position
@@ -22,11 +31,15 @@ func _process(_delta):
 	update()
 
 func _physics_process(_delta):
+	if game_over:
+		return
+	
 	if player_body.linear_velocity.length() >= Globals.MIN_DASH_SPEED:
 		dash_particles.emitting = true
 	else:
 		dash_particles.emitting = false
 	
+	# Controls
 	if Input.is_action_just_pressed("left_click"):
 		var mouse_pos = get_global_mouse_position()
 		if mouse_pos.distance_to(player_body.global_position) > MIN_PLAYER_DIST:
@@ -35,15 +48,23 @@ func _physics_process(_delta):
 				if mouse_pos.distance_to(wheel.global_position) <= wheel.get_radius():
 					set_pin_at(mouse_pos, wheel)
 					break
-#		if pin_joint.global_position.x < player_body.global_position.x:
-#			player_body.apply_impulse(Vector2.ZERO, Vector2(-128, 0))
-#		else:
-#			player_body.apply_impulse(Vector2.ZERO, Vector2(128, 0))
+	
 	if Input.is_action_just_released("left_click"):
 		release_pin()
+	
+	# Map bound checks
+	if player_body.global_position.y >= bottom_map_pos.y:
+		# Game over
+		game_over = true
+		dash_particles.emitting = false
+		player_body.mode = RigidBody2D.MODE_STATIC
+		player_body.collision_layer = 0
+		player_body.collision_mask = 0
+		hide()
+		get_parent().game_over()
 
 func set_pin_at(pos: Vector2, wheel):
-	player_body.gravity_scale = 10
+	player_body.gravity_scale = 9
 	
 	# Create a new pin object
 	var pin = PinScene.instance()

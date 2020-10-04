@@ -1,6 +1,29 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://GUI/FutilePro.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://GUI/GameOverMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Stages/Stage.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0.133333, 0.12549, 0.203922, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "game_over"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("UI/GameOverMenu:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 96, 264 ), Vector2( 96, 264 ), Vector2( 96, 64 ) ]
+}
 
 [node name="StageTemplate" type="Node2D"]
 script = ExtResource( 3 )
@@ -20,4 +43,37 @@ __meta__ = {
 
 [node name="SpawnTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="MapBounds" type="Node" parent="."]
+
+[node name="TopBound" type="Position2D" parent="MapBounds"]
+
+[node name="BottomBound" type="Position2D" parent="MapBounds"]
+
+[node name="LeftBound" type="Position2D" parent="MapBounds"]
+
+[node name="RightBound" type="Position2D" parent="MapBounds"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="UI"]
+margin_top = 8.0
+margin_right = 320.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 1 )
+text = "Score: 123"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverMenu" parent="UI" instance=ExtResource( 2 )]
+margin_left = 96.0
+margin_top = 264.0
+margin_right = -96.0
+margin_bottom = 136.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/game_over = SubResource( 2 )
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
