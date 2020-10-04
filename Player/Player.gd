@@ -1,5 +1,4 @@
 extends Node2D
-class_name Player
 
 const PinScene = preload("res://Wheel/Pin.tscn")
 
@@ -11,6 +10,8 @@ onready var pin_joint = $PinJoint
 onready var starting_pin = $Pin
 onready var current_pin = null
 
+onready var dash_particles = $PlayerBody/DashParticles
+
 func _draw():
 	if current_pin != null:
 		var from = player_body.global_position - position
@@ -21,6 +22,11 @@ func _process(_delta):
 	update()
 
 func _physics_process(_delta):
+	if player_body.linear_velocity.length() >= Globals.MIN_DASH_SPEED:
+		dash_particles.emitting = true
+	else:
+		dash_particles.emitting = false
+	
 	if Input.is_action_just_pressed("left_click"):
 		var mouse_pos = get_global_mouse_position()
 		if mouse_pos.distance_to(player_body.global_position) > MIN_PLAYER_DIST:

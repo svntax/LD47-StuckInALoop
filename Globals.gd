@@ -1,5 +1,9 @@
 extends Node
 
+const MIN_DASH_SPEED = 142
+
+var points = 0
+
 func _ready():
 	OS.window_size = Vector2(640, 480)
 	# Center the window after resizing

@@ -10,13 +10,18 @@ __meta__ = {
 }
 
 [node name="Wheel" parent="." instance=ExtResource( 2 )]
-position = Vector2( 138.624, 101.583 )
+
+[node name="Wheel2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 272, 0 )
+
+[node name="Wheel3" parent="." instance=ExtResource( 2 )]
+position = Vector2( -272, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 138.063, 47.1434 )
+position = Vector2( 0, -160 )
 
 [node name="Balloon" parent="." instance=ExtResource( 3 )]
-position = Vector2( 124.661, 148.604 )
+position = Vector2( -83.574, -9.57451 )
 
 [node name="Balloon2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 216.834, 42.1277 )
+position = Vector2( 334.3, -52.6459 )
