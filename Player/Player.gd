@@ -38,6 +38,8 @@ func _ready():
 	var right = get_node_or_null(right_bound)
 	if right != null:
 		right_map_pos = right.global_position
+	
+	current_pin = starting_pin
 
 func _draw():
 	if current_pin != null:
