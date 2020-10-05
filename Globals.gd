@@ -5,7 +5,7 @@ const MIN_DASH_SPEED = 184
 var score = 0
 var current_map = 0
 
-var high_scores = [0, 0]
+var high_scores : Array = [0, 0]
 
 func _ready():
 	OS.window_size = Vector2(640, 480)
@@ -34,6 +34,8 @@ func load_data():
 		var content = parse_json(file.get_as_text())
 		if typeof(content) == TYPE_ARRAY:
 			high_scores = content
+			if high_scores.size() != 2:
+				high_scores = [0, 0]
 			if high_scores[0] < 0:
 				high_scores[0] = 0
 			if high_scores[1] < 0:
