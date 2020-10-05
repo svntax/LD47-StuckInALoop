@@ -15,9 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ludum Dare 47"
+config/name="Pendulum Jumps"
 run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
+config/icon="res://Wheel/wheel_icon.png"
 
 [autoload]
 

@@ -6,6 +6,7 @@
 [sub_resource type="DynamicFont" id=1]
 size = 32
 outline_size = 2
+outline_color = Color( 0.85098, 0.627451, 0.4, 1 )
 font_data = ExtResource( 2 )
 
 [node name="TitleSign" type="Node2D"]
@@ -27,7 +28,7 @@ default_color = Color( 0.133333, 0.12549, 0.203922, 1 )
 margin_left = -104.0
 margin_top = 104.0
 margin_right = 104.0
-margin_bottom = 152.0
+margin_bottom = 182.0
 texture = ExtResource( 1 )
 patch_margin_left = 16
 patch_margin_top = 16
@@ -44,7 +45,8 @@ margin_right = 96.0
 margin_bottom = 144.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.247059, 0.247059, 0.454902, 1 )
-text = "GAME TITLE"
+text = "PENDULUM
+JUMPS"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

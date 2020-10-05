@@ -101,7 +101,7 @@ anims/dashing = SubResource( 3 )
 anims/normal = SubResource( 4 )
 
 [node name="DashStopTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.1
 one_shot = true
 
 [node name="PinBreakSound" type="AudioStreamPlayer" parent="."]

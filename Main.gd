@@ -28,6 +28,7 @@ func _process(_delta):
 		buttons_background.show()
 		cutscene_finished = true
 		hit_sfx.play()
+		wheel.can_click = true
 
 func _on_IntroTimer_timeout():
 	animation_player.play("intro_transition")
@@ -37,7 +38,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "intro_transition":
 		cutscene_finished = true
 		hit_sfx.play()
-		#wheel.rotation_speed = 15
+		wheel.can_click = true
 
 func _on_AnimationPlayer_animation_started(anim_name):
 	if anim_name == "normal":
@@ -57,3 +58,15 @@ func _on_Exit_pressed():
 		return
 	
 	get_tree().quit()
+
+func _on_ButtonsBg_mouse_entered():
+	wheel.can_click = false
+
+func _on_ButtonsBg_mouse_exited():
+	wheel.can_click = true
+
+func _on_Play_mouse_entered():
+	wheel.can_click = false
+
+func _on_Exit_mouse_entered():
+	wheel.can_click = false

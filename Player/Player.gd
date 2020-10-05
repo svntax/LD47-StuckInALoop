@@ -40,6 +40,10 @@ func _ready():
 		right_map_pos = right.global_position
 	
 	current_pin = starting_pin
+	starting_pin.collision_layer = 0
+	starting_pin.collision_mask = 0
+	starting_pin.area_detect.collision_layer = 0
+	starting_pin.area_detect.collision_mask = 0
 
 func _draw():
 	if current_pin != null:

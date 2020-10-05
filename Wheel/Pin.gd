@@ -36,10 +36,10 @@ func _on_AreaDetect_body_entered(body):
 		if body.get_parent().is_dashing():
 			if !permanent and !broken:
 				body.get_parent().pin_break_sfx.play()
+				body.apply_central_impulse(body.linear_velocity.normalized() * -48)
 			break_pin()
 		else:
 			body.get_parent().play_hit_sound()
-
 
 func _on_DeathTimer_timeout():
 	queue_free()
