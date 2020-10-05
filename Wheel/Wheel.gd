@@ -13,7 +13,7 @@ func _ready():
 	if interactable:
 		PinScene = load("res://Wheel/Pin.tscn")
 
-func _process(delta):
+func _process(_delta):
 	if can_click:
 		if Input.is_action_just_pressed("left_click"):
 			var pos = get_global_mouse_position()

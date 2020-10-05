@@ -28,6 +28,7 @@ func _process(_delta):
 		buttons_background.show()
 		cutscene_finished = true
 		hit_sfx.play()
+		yield(get_tree().create_timer(0.2), "timeout")
 		wheel.can_click = true
 
 func _on_IntroTimer_timeout():
