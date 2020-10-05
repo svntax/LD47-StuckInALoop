@@ -21,12 +21,23 @@ onready var lose_sfx = $LoseSound
 
 export (NodePath) var bottom_bound = ""
 onready var bottom_map_pos = null
+export (NodePath) var left_bound = ""
+onready var left_map_pos = null
+export (NodePath) var right_bound = ""
+onready var right_map_pos = null
+
 onready var game_over = false
 
 func _ready():
 	var bottom = get_node_or_null(bottom_bound)
 	if bottom != null:
 		bottom_map_pos = bottom.global_position
+	var left = get_node_or_null(left_bound)
+	if left != null:
+		left_map_pos = left.global_position
+	var right = get_node_or_null(right_bound)
+	if right != null:
+		right_map_pos = right.global_position
 
 func _draw():
 	if current_pin != null:
@@ -65,7 +76,7 @@ func _physics_process(_delta):
 		release_pin()
 	
 	# Map bound checks
-	if player_body.global_position.y >= bottom_map_pos.y:
+	if outside_map_bounds():
 		# Game over
 		game_over = true
 		lose_sfx.play()
@@ -75,6 +86,11 @@ func _physics_process(_delta):
 		player_body.collision_mask = 0
 		hide()
 		get_parent().game_over()
+
+func outside_map_bounds() -> bool:
+	return player_body.global_position.y >= bottom_map_pos.y \
+		or player_body.global_position.x <= left_map_pos.x \
+		or player_body.global_position.x >= right_map_pos.x
 
 func set_pin_at(pos: Vector2, wheel):
 	player_body.gravity_scale = 9
