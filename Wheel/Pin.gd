@@ -21,5 +21,9 @@ func break_pin():
 
 func _on_AreaDetect_body_entered(body):
 	if body.is_in_group("Players"):
-		if  body.get_parent().is_dashing():
+		if body.get_parent().is_dashing():
+			if !permanent and !broken:
+				body.get_parent().pin_break_sfx.play()
 			break_pin()
+		else:
+			body.get_parent().play_hit_sound()

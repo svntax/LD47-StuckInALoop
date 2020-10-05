@@ -14,6 +14,9 @@ onready var dash_particles = $PlayerBody/DashParticles
 onready var dash_stop_timer = $DashStopTimer
 onready var dashing = false
 onready var layers_anim_player = $LayersAnimation
+onready var pin_break_sfx = $PinBreakSound
+onready var pin_create_sfx = $PinCreateSound
+onready var hit_sounds = [$Hit01, $Hit02]
 
 export (NodePath) var bottom_bound = ""
 onready var bottom_map_pos = null
@@ -79,6 +82,7 @@ func set_pin_at(pos: Vector2, wheel):
 	wheel.add_child(pin)
 	pin.global_position = pos
 	current_pin = pin
+	pin_create_sfx.play()
 	
 	# Reparent the starting pin and pin joint to the wheel
 	var parent = pin_joint.get_parent()
@@ -104,6 +108,10 @@ func is_dashing() -> bool:
 
 func knockback(force: Vector2):
 	player_body.apply_central_impulse(force)
+
+func play_hit_sound():
+	var i = randi() % hit_sounds.size()
+	hit_sounds[i].play()
 
 func _on_DashStopTimer_timeout():
 	dashing = false

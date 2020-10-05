@@ -1,6 +1,6 @@
 extends Node
 
-const MIN_DASH_SPEED = 172
+const MIN_DASH_SPEED = 184
 
 var score = 0
 var current_map = 0

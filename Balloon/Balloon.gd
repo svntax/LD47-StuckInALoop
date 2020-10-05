@@ -3,6 +3,8 @@ extends Area2D
 signal popped()
 
 onready var animation_player = $AnimationPlayer
+onready var pop_sfx = $PopSound
+onready var score_sfx = $ScoreSound
 
 onready var popped = false
 onready var explosion_force = 300
@@ -21,9 +23,14 @@ func pop_balloon():
 	if popped:
 		return
 	popped = true
+	pop_sfx.play()
+	$ScoreSoundTimer.start()
 	emit_signal("popped")
 	animation_player.play("popped")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "popped":
 		queue_free()
+
+func _on_ScoreSoundTimer_timeout():
+	score_sfx.play()
