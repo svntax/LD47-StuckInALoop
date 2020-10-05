@@ -11,6 +11,8 @@ onready var explosion_force = 300
 
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
+	yield(get_tree().create_timer(rand_range(0.1, 0.8)), "timeout")
+	animation_player.play("idle")
 
 func _on_body_entered(body):
 	if body.is_in_group("Players"):

@@ -6,7 +6,6 @@ onready var wheel = $Wheel
 onready var buttons = $Buttons
 onready var buttons_background = $ButtonsBg
 onready var hit_sfx = $HitSound
-onready var select_sfx = $SelectSound
 
 onready var cutscene_finished = false
 
@@ -50,8 +49,8 @@ func _on_Play_pressed():
 	if not cutscene_finished:
 		return
 	
-	select_sfx.play()
-	get_tree().change_scene("res://Stages/Stage01.tscn")
+	SoundHandler.select_sfx.play()
+	get_tree().change_scene("res://StageSelect.tscn")
 
 func _on_Exit_pressed():
 	if not cutscene_finished:

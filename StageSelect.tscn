@@ -1,0 +1,815 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Wheel/wheel_icon.png" type="Texture" id=1]
+[ext_resource path="res://GUI/wooden_ui_clean.png" type="Texture" id=2]
+[ext_resource path="res://GUI/FutilePro.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Stages/WallTileset.tres" type="TileSet" id=4]
+[ext_resource path="res://Stages/abyss_tile.png" type="Texture" id=5]
+[ext_resource path="res://Balloon/Balloon.tscn" type="PackedScene" id=6]
+[ext_resource path="res://StageSelect.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 2
+outline_color = Color( 0.4, 0.223529, 0.192157, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=33]
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=21]
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="StyleBoxEmpty" id=23]
+
+[sub_resource type="DynamicFont" id=30]
+outline_size = 2
+outline_color = Color( 0.4, 0.223529, 0.192157, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=34]
+
+[sub_resource type="TileSet" id=8]
+0/name = "abyss_top"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 32, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "abyss_bottom"
+1/texture = ExtResource( 5 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 16, 32, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "abyss_center"
+2/texture = ExtResource( 5 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 32, 0, 32, 16 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+
+[sub_resource type="DynamicFont" id=35]
+outline_color = Color( 0.4, 0.223529, 0.192157, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=32]
+resource_name = "locked"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Grid/Stage02/Score:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.133333, 0.12549, 0.203922, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Grid/Stage02/Score:custom_fonts/font:outline_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Grid/Stage02/Name:custom_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.133333, 0.12549, 0.203922, 1 ) ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "unlocked"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Grid/Stage02/Score:custom_fonts/font:outline_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Grid/Stage02/Score:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Grid/Stage02/Name:custom_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.85098, 0.627451, 0.4, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.4, 0.223529, 0.192157, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.4, 0.223529, 0.192157, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="DynamicFont" id=18]
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=24]
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 7 ), Vector2( 0, 8 ), Vector2( 0, 7 ), Vector2( 0, 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PoppedFrames:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PoppedFrames:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=25]
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PoppedFrames:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PoppedFrames:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=26]
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 7 ), Vector2( 0, 8 ), Vector2( 0, 7 ), Vector2( 0, 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PoppedFrames:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PoppedFrames:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=27]
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PoppedFrames:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PoppedFrames:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=28]
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 7 ), Vector2( 0, 8 ), Vector2( 0, 7 ), Vector2( 0, 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PoppedFrames:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PoppedFrames:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=29]
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PoppedFrames:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PoppedFrames:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[node name="StageSelect" type="Node2D"]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Bg" type="ColorRect" parent="."]
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 328.0
+margin_bottom = 248.0
+color = Color( 0.270588, 0.156863, 0.235294, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="GridContainer" parent="."]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 296.0
+margin_bottom = 104.0
+custom_constants/vseparation = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stage01" type="ColorRect" parent="Grid"]
+margin_right = 272.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 272, 80 )
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StageBg" type="NinePatchRect" parent="Grid/Stage01"]
+margin_top = 8.0
+margin_right = 272.0
+margin_bottom = 72.0
+texture = ExtResource( 2 )
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg2" type="ColorRect" parent="Grid/Stage01"]
+margin_left = 192.0
+margin_top = 16.0
+margin_right = 256.0
+margin_bottom = 80.0
+color = Color( 0.270588, 0.156863, 0.235294, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Grid/Stage01"]
+margin_left = 16.0
+margin_top = 21.0
+margin_right = 85.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "STAGE  1"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Grid/Stage01"]
+margin_left = 16.0
+margin_top = 45.0
+margin_right = 138.0
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "High Score: 123"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Grid/Stage01"]
+margin_left = 216.0
+margin_top = 33.0
+margin_right = 232.0
+margin_bottom = 49.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Grid/Stage01"]
+margin_left = 234.0
+margin_top = 33.0
+margin_right = 250.0
+margin_bottom = 49.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="Grid/Stage01"]
+margin_left = 198.0
+margin_top = 33.0
+margin_right = 214.0
+margin_bottom = 49.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button01" type="Button" parent="Grid/Stage01"]
+margin_left = -3.0
+margin_top = -3.0
+margin_right = 275.0
+margin_bottom = 83.0
+custom_styles/hover = SubResource( 33 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stage02" type="ColorRect" parent="Grid"]
+margin_top = 96.0
+margin_right = 272.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 272, 80 )
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StageBg" type="NinePatchRect" parent="Grid/Stage02"]
+margin_top = 8.0
+margin_right = 272.0
+margin_bottom = 72.0
+texture = ExtResource( 2 )
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg2" type="ColorRect" parent="Grid/Stage02"]
+margin_left = 192.0
+margin_top = 16.0
+margin_right = 256.0
+margin_bottom = 80.0
+color = Color( 0.270588, 0.156863, 0.235294, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Grid/Stage02"]
+margin_left = 16.0
+margin_top = 21.0
+margin_right = 85.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 30 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "STAGE  2"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Grid/Stage02"]
+margin_left = 16.0
+margin_top = 45.0
+margin_right = 138.0
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 30 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "High Score: 123"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Grid/Stage02"]
+margin_left = 216.0
+margin_top = 33.0
+margin_right = 232.0
+margin_bottom = 49.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Grid/Stage02"]
+margin_left = 234.0
+margin_top = 33.0
+margin_right = 250.0
+margin_bottom = 49.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="Grid/Stage02"]
+margin_left = 198.0
+margin_top = 33.0
+margin_right = 214.0
+margin_bottom = 49.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button02" type="Button" parent="Grid/Stage02"]
+margin_left = -3.0
+margin_top = -3.0
+margin_right = 275.0
+margin_bottom = 83.0
+custom_styles/hover = SubResource( 34 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WallTiles" type="TileMap" parent="."]
+position = Vector2( 24, 24 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 8
+format = 1
+tile_data = PoolIntArray( -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -131063, 0, 0, -131062, 0, 0, -131061, 0, 0, -131060, 0, 0, -131059, 0, 0, -131058, 0, 0, -131057, 0, 0, -131056, 0, 0, -131055, 0, 0, -131054, 0, 0, -2, 0, 0, -65518, 0, 0, 65534, 0, 0, 11, 0, 0, 12, 3, 0, 13, 3, 0, 14, 1, 0, 15, 0, 0, 16, 0, 0, 18, 0, 0, 131070, 0, 0, 65547, 2, 0, 65552, 0, 0, 65554, 0, 0, 196606, 0, 0, 131083, 0, 0, 131088, 2, 0, 131090, 0, 0, 262142, 0, 0, 196619, 0, 0, 196624, 0, 0, 196626, 0, 0, 327678, 0, 0, 262155, 2, 0, 262160, 2, 0, 262162, 0, 0, 393214, 0, 0, 327698, 0, 0, 458750, 0, 0, 393227, 1, 0, 393228, 1, 0, 393229, 2, 0, 393230, 1, 0, 393231, 1, 0, 393232, 2, 0, 393234, 0, 0, 524286, 0, 0, 458763, 3, 0, 458768, 0, 0, 458770, 0, 0, 589822, 0, 0, 524299, 1, 0, 524304, 0, 0, 524306, 0, 0, 655358, 0, 0, 589835, 3, 0, 589840, 0, 0, 589842, 0, 0, 720894, 0, 0, 655371, 1, 0, 655376, 0, 0, 655378, 0, 0, 786430, 0, 0, 720914, 0, 0, 851966, 0, 0, 786450, 0, 0, 917502, 0, 0, 851986, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AbyssTilesFront" type="TileMap" parent="."]
+position = Vector2( 24, 24 )
+tile_set = SubResource( 8 )
+cell_size = Vector2( 32, 16 )
+format = 1
+tile_data = PoolIntArray( 262150, 0, 0, 262151, 0, 0, 655366, 0, 0, 655367, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Border01" type="Line2D" parent="."]
+position = Vector2( 24, 24 )
+points = PoolVector2Array( 177, 1, 271, 1, 271, 79, 177, 79, 177, 0 )
+width = 2.0
+default_color = Color( 0.4, 0.223529, 0.192157, 1 )
+
+[node name="Border02" type="Line2D" parent="."]
+position = Vector2( 24, 120 )
+points = PoolVector2Array( 177, 1, 271, 1, 271, 79, 177, 79, 177, 0 )
+width = 2.0
+default_color = Color( 0.4, 0.223529, 0.192157, 1 )
+
+[node name="LockedRect" type="ColorRect" parent="."]
+margin_left = 200.0
+margin_top = 120.0
+margin_right = 296.0
+margin_bottom = 200.0
+color = Color( 0.133333, 0.12549, 0.203922, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="\?\?\?" type="Label" parent="LockedRect"]
+margin_right = 96.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 35 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "? ? ?"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/locked = SubResource( 32 )
+anims/unlocked = SubResource( 31 )
+
+[node name="Back" type="Button" parent="."]
+margin_left = 24.0
+margin_top = 208.0
+margin_right = 104.0
+margin_bottom = 228.0
+rect_min_size = Vector2( 80, 20 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/normal = SubResource( 14 )
+custom_fonts/font = SubResource( 18 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Balloon" parent="." instance=ExtResource( 6 )]
+position = Vector2( 160, 216 )
+
+[node name="OffscreenMarker" parent="Balloon" index="4"]
+visible = false
+
+[node name="Balloon2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 200, 220 )
+
+[node name="AnimationPlayer" parent="Balloon2" index="3"]
+anims/idle = SubResource( 24 )
+anims/popped = SubResource( 25 )
+
+[node name="OffscreenMarker" parent="Balloon2" index="4"]
+visible = false
+
+[node name="Balloon3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 240, 216 )
+
+[node name="AnimationPlayer" parent="Balloon3" index="3"]
+anims/idle = SubResource( 26 )
+anims/popped = SubResource( 27 )
+
+[node name="OffscreenMarker" parent="Balloon3" index="4"]
+visible = false
+
+[node name="Balloon4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 280, 219 )
+
+[node name="AnimationPlayer" parent="Balloon4" index="3"]
+anims/idle = SubResource( 28 )
+anims/popped = SubResource( 29 )
+
+[node name="OffscreenMarker" parent="Balloon4" index="4"]
+visible = false
+[connection signal="pressed" from="Grid/Stage01/Button01" to="." method="_on_Button01_pressed"]
+[connection signal="pressed" from="Grid/Stage02/Button02" to="." method="_on_Button02_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
+
+[editable path="Balloon"]
+
+[editable path="Balloon2"]
+
+[editable path="Balloon3"]
+
+[editable path="Balloon4"]

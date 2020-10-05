@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://Globals.gd"
+SoundHandler="*res://SoundHandler.tscn"
 
 [display]
 

@@ -5,7 +5,7 @@ const MIN_DASH_SPEED = 184
 var score = 0
 var current_map = 0
 
-var high_scores = [0]
+var high_scores = [0, 0]
 
 func _ready():
 	OS.window_size = Vector2(640, 480)
