@@ -13,6 +13,32 @@ func _ready():
 	var screen_size = OS.get_screen_size()
 	var window_size = OS.get_window_size()
 	OS.set_window_position(screen_size*0.5 - window_size*0.5)
+	
+	# Save data handling
+	load_data()
+
+func save_data():
+	var file = File.new()
+	var err = file.open("user://save_game.dat", File.WRITE)
+	if err == OK:
+		file.store_line(to_json(high_scores))
+		file.close()
+
+func load_data():
+	var file = File.new()
+	if not file.file_exists("user://save_game.dat"):
+		return
+	
+	var err = file.open("user://save_game.dat", File.READ)
+	if err == OK:
+		var content = parse_json(file.get_as_text())
+		if typeof(content) == TYPE_ARRAY:
+			high_scores = content
+			if high_scores[0] < 0:
+				high_scores[0] = 0
+			if high_scores[1] < 0:
+				high_scores[1] = 0
+		file.close()
 
 # Update the high score for the current map
 func update_high_score() -> bool:

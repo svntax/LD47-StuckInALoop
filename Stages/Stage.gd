@@ -24,6 +24,7 @@ func game_over():
 	var new_high_score = Globals.update_high_score()
 	if new_high_score:
 		game_over_menu.set_new_high_score_text(true)
+	Globals.save_data()
 
 # Spawn a balloon at a randomly picked spawn position
 func spawn_balloon():
