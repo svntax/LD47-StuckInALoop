@@ -17,6 +17,7 @@ onready var layers_anim_player = $LayersAnimation
 onready var pin_break_sfx = $PinBreakSound
 onready var pin_create_sfx = $PinCreateSound
 onready var hit_sounds = [$Hit01, $Hit02]
+onready var lose_sfx = $LoseSound
 
 export (NodePath) var bottom_bound = ""
 onready var bottom_map_pos = null
@@ -67,6 +68,7 @@ func _physics_process(_delta):
 	if player_body.global_position.y >= bottom_map_pos.y:
 		# Game over
 		game_over = true
+		lose_sfx.play()
 		dash_particles.emitting = false
 		player_body.mode = RigidBody2D.MODE_STATIC
 		player_body.collision_layer = 0
